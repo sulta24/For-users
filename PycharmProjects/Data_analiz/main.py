@@ -1,23 +1,21 @@
-import subprocess
-import os
-import sys
-import time
+import numpy as np
+import tensorflow as tf
 
-def go_to_sleep():
-    # Для Windows
-    os.system("rundll32.exe powrprof.dll,SetSuspendState 0,1,0")
-    # Для Linux
-    # os.system("systemctl suspend")
+# Загрузка сохранённой модели
+model = tf.keras.models.load_model('with_meteo/model_wm.keras')
 
-def run_program():
-    # Запуск другого Python скрипта (например, program.py)
-    subprocess.run([sys.executable, ""])
+# Входные данные (вектор)
+input_data = np.array([[0.567108, 0.000000, 0.00007, 0, 0.9884683,0.000087, 0, 7.894800e-09]])
 
-# Ваша основная программа
-try:
-    # Запускаем внешний файл
-    run_program()
-finally:
-    # После завершения работы программы
-    time.sleep(5)  # Дополнительная задержка перед переходом в спящий режим (если нужно)
-    #go_to_sleep()
+# Преобразование данных в ожидаемую форму (batch_size, sequence_length, num_features)
+input_data = input_data.reshape((1, 1, 8))  # batch_size=1, sequence_length=1, num_features=8
+
+# Убедимся, что размерность данных правильная
+print("Shape of input data:", input_data.shape)
+
+# Предсказание
+predictions = model.predict(input_data)
+
+# Вывод предсказаний
+print("Predictions:", predictions)
+

@@ -3,6 +3,7 @@ df = pd.read_parquet("combined_atlas.parquet")
 import numpy as np
 
 print('-' * 300)
+pd.set_option('display.max_columns', None)
 print(df[['lat', 'lon', 'duration', 'expansion', 'speed', 'landcover']].head())
 
 print(df.head())
@@ -55,20 +56,17 @@ df = df.reindex(columns=new_order)
 # Применение преобразований к указанным столбцам единички
 df['lat'] = (df['lat'] - min(df['lat'])) / (max(df['lat']) - min(df['lat']))
 df['lon'] = (df['lon'] - min(df['lon'])) / (max(df['lon']) - min(df['lon']))
-df['landcover'] = df['landcover'] / 12
-df['duration'] = (df['duration'] - min(df['duration'])) / (max(df['duration']) - min(df['duration']))
-df['expansion'] = df['expansion'] / 10
-df['speed'] = df['speed'] / 10
-df['direction'] = df['direction'] / 10
+df['landcover'] = np.minimum(1, df['landcover'] / 10)
+df['duration'] = np.minimum(1, df['duration'] / 31)
+df['expansion'] = np.minimum(df['expansion'] / 10,1)
+df['speed'] = np.minimum(df['speed'] / 10,1)
+df['direction'] = df['direction'] / 8
 
 
-print('-' * 300)
-print(df[['lat', 'lon', 'duration', 'expansion', 'speed', 'direction', 'landcover']].head())
 
-print(df.head())
-
+print('+' * 300)
 print(df.describe())
-print('-' * 300)
+print('+' * 300)
 
 
 
@@ -77,3 +75,4 @@ print(df.isnull().sum())
 
 
 df.to_parquet("Atlas_nerm.parquet")
+
