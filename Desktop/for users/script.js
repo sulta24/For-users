@@ -19,7 +19,7 @@ infoBox.innerHTML = `
   <p>Кликните на карту, чтобы выбрать координаты.</p>
   <label>Дата начала: <input type="date" id="start-date" value="${new Date().toISOString().split('T')[0]}"></label><br>
   <label>Дата начала: <input type="date" id="start-date" value="${new Date().toISOString().split('T')[0]}"></label><br>
-      <label>Вид местности:
+      <label>Вид местности: 
         <select id="land-type">
           <option value="0">Городские территории</option>
       <option value="1">Вечнозелёные широколиственные леса</option>
@@ -120,7 +120,7 @@ function spreadFire(centerLat, centerLng, maxRadius, delay, steps, centerOffset)
 
         var angle = Math.random() * Math.PI * 2;
         var radius = Math.random() * maxRadius;
-
+       
         if (step % 2 === 0 && step !== 0) {
             centerLat -= centerOffset.lng;
             centerLng += centerOffset.lng;
@@ -204,7 +204,7 @@ map.on('click', function (e) {
       <p><b>Широта:</b> ${lat.toFixed(6)}</p>
       <p><b>Долгота:</b> ${lng.toFixed(6)}</p>
       <label>Дата начала: <input type="date" id="start-date" value="${new Date().toISOString().split('T')[0]}"></label><br>
-      <label>Вид местности:
+      <label>Вид местности: 
         <select id="land-type">
           <option value="0">Городские территории</option>
       <option value="1">Вечнозелёные широколиственные леса</option>
@@ -278,7 +278,7 @@ function showPopup(element, text) {
 
 
     document.body.appendChild(popup);
-
+  
     popup.addEventListener('click', () => {
         popup.remove();
     });

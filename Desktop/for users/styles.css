@@ -1,0 +1,167 @@
+/* Основные стили */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #20232a;
+    color: #ffffff;
+}
+
+/* Шапка */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+    background-color: #111;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+
+
+.search-bar {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+}
+
+/* Карта */
+.map-container {
+    position: relative;
+    height: calc(100vh - 60px);
+    width: 100%;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Кнопка пожара */
+.fire-button {
+    position: absolute;
+    bottom: 10%;
+    left: 44%;
+    transform: translateX(-50%);
+    padding: 12px 18px;
+    background: linear-gradient(135deg, #008000, #00FF00); /* Аналогичный градиент */
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    z-index: 2;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.fire-button:hover {
+    background: linear-gradient(135deg, #ff7e33, #ff5722); /* Немного светлее при наведении */
+    transform: translateX(-50%) scale(1.05);
+}
+
+.clear-fire-button {
+    top: 10%;
+    left: auto;
+    right: 10px;
+    transform: none;
+    padding: 10px 20px;
+    background-color: #ff5252;
+}
+
+.clear-fire-button:hover {
+    background-color: #e04343;
+}
+
+/* Координаты */
+#coordinates {
+    position: absolute;
+    top: 10%;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    z-index: 1000;
+    font-size: 14px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+#coordinates h3 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+}
+.donermenu {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 100px;
+    z-index: 10;
+}
+
+.donermenu a {
+    padding: 30px 15px;
+    text-decoration: none;
+    font-size: 21px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+    position: relative;
+}
+
+.donermenu a:hover {
+    background-color: #575757;
+}
+
+.close-btn {
+    position: absolute;
+    bottom: 100px;
+    left: 180px;
+    color: white;
+    font-size:50px;
+    text-decoration: none;
+    cursor: pointer;
+    z-index: 15;
+}
+
+
+.open {
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 5;
+    transition: 0.3s;
+}
+
+.popup {
+    position: absolute;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 21px;
+    white-space: normal;
+    word-wrap: break-word;
+    z-index: 20;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    max-width: 250px;
+}
